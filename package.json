@@ -4,6 +4,12 @@
   "description": "Brazilian design systems list",
   "main": "index.js",
   "scripts": {
+    "build": "npm run css:build && npm run jekyll:build",
+    "css:dev": "postcss _sass/main.scss --output assets/css/style.css --watch",
+    "css:build": "NODE_ENV=production postcss _sass/main.scss --output assets/css/style.css",
+    "dev": "concurrently --kill-others \"npm run jekyll:dev\" \"npm run css:dev\"",
+    "jekyll:dev": "bundle exec jekyll serve --incremental --watch",
+    "jekyll:build": "JEKYLL_ENV=production bundle exec jekyll build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
